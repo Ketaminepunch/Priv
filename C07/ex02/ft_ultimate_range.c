@@ -1,51 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strdup.c                                           :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsack <vsack@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 14:33:30 by vsack             #+#    #+#             */
-/*   Updated: 2026/02/11 15:37:27 by vsack            ###   ########.fr       */
+/*   Created: 2026/02/11 16:55:05 by vsack             #+#    #+#             */
+/*   Updated: 2026/02/13 18:35:25 by vsack            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+int ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
-
+	int size;
+	
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*ret;
-	int		i;
-
-	ret = (char *)malloc (ft_strlen(src)+1);
-	if (!ret)
-		return (0);
-	i = 0;
-	while (src[i])
+	size = max - min;
+	if (min >= max)
 	{
-		ret[i] = src[i];
+		*range = NULL;
+		return (0);
+	}
+	*range = malloc(size * sizeof(int));
+	if (!*range)
+		return (-1);
+	while (i < size)
+	{
+		(*range)[i] = min + i;
 		i++;
 	}
-	ret[i] = '\0';
-	return (ret);
+	return (max - min);
 }
 /*
 #include <stdio.h>
+
 int	main(void)
 {
-	char* str;
+	int	*range;
+	int	size;
 
-	str = "HELLOMYFRIEND";
-
-	printf("%s\n", ft_strdup(str));
+	size = ft_ultimate_range(&range, -4, 5);
+	printf("%i",size);
 }*/

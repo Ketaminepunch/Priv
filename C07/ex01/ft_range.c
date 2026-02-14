@@ -1,51 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strdup.c                                           :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsack <vsack@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 14:33:30 by vsack             #+#    #+#             */
-/*   Updated: 2026/02/11 15:37:27 by vsack            ###   ########.fr       */
+/*   Created: 2026/02/11 15:32:55 by vsack             #+#    #+#             */
+/*   Updated: 2026/02/13 18:32:19 by vsack            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+int	*ft_range(int min, int max)
 {
+	int	*arr;
 	int	i;
+	int	size;
 
+	if (min >= max)
+		return (NULL);
+	size = max - min;
+	arr = malloc(size * sizeof(int));
+	if (!arr)
+		return (NULL);
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*ret;
-	int		i;
-
-	ret = (char *)malloc (ft_strlen(src)+1);
-	if (!ret)
-		return (0);
-	i = 0;
-	while (src[i])
+	while (i < size)
 	{
-		ret[i] = src[i];
+		arr[i] = min + i;
 		i++;
 	}
-	ret[i] = '\0';
-	return (ret);
+	return (arr);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char* str;
-
-	str = "HELLOMYFRIEND";
-
-	printf("%s\n", ft_strdup(str));
-}*/
