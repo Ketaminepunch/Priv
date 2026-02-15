@@ -90,8 +90,8 @@ char *ft_strjoin(int size, char **strs, char *sep)
 	res[k] = '\0';
 	return (res);
 }
-
-#include <unistd.h>
+/*
+include <unistd.h>
 int	main(void)
 {
 	char *arr[] = {"HELLO", "MYNAMEIS", "EMINEM"};
@@ -109,4 +109,4 @@ int	main(void)
 	}
 	write(1, "\n", 1);
 	free(result);
-}
+}*/
